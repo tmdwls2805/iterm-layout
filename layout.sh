@@ -49,14 +49,19 @@ END
 tell application "iTerm"
   activate
   $windowExpr
+  -- 1) 먼저 좌·우 두 열로 나눔.
   tell current session of win
-    repeat $((left - 1)) times
-      split horizontally with default profile
-    end repeat
     set rightPane to split vertically with default profile
   end tell
+  -- 2) 오른쪽 열을 (right - 1) 번 가로 분할해 오른쪽 열 안에서 right 개 행.
   tell rightPane
     repeat $((right - 1)) times
+      split horizontally with default profile
+    end repeat
+  end tell
+  -- 3) 왼쪽 열(첫 세션)을 (left - 1) 번 가로 분할.
+  tell current session of win
+    repeat $((left - 1)) times
       split horizontally with default profile
     end repeat
   end tell
