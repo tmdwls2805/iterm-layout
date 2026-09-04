@@ -77,6 +77,25 @@ END
     windowExpr='set win to (create window with default profile)'
   fi
 
+  # 생성 후에도 확인할 수 있도록 미리보기 재생성 (인자 모드로 호출된 경우 대비).
+  local previewAfter=""
+  local afterRows=$left
+  [ "$right" -gt "$afterRows" ] && afterRows=$right
+  local ii lc rc
+  for ((ii = 1; ii <= afterRows; ii++)); do
+    if [ "$ii" -le "$left" ]; then
+      lc=$(printf "[ %2d ]" "$ii")
+    else
+      lc="      "
+    fi
+    if [ "$ii" -le "$right" ]; then
+      rc=$(printf "[ %2d ]" "$((left + ii))")
+    else
+      rc="      "
+    fi
+    previewAfter+="${lc}  ${rc}"$'\n'
+  done
+
   osascript <<END
 tell application "iTerm"
   activate
@@ -113,5 +132,12 @@ tell application "iTerm"
     set name of item i of rightSessions to ("" & (${left} + i))
   end repeat
 end tell
+END
+
+  # 생성 결과 미리보기 팝업 (닫기 전엔 유지).
+  osascript <<END &
+display dialog "생성 완료: ${left} × ${right}
+
+${previewAfter}" buttons {"닫기"} default button "닫기" with title "iterm-layout"
 END
 }
