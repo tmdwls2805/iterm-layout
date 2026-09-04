@@ -1,128 +1,47 @@
 # iterm-layout — iTerm2 자동 분할
 # 사용:
-#   layout            → GUI 프롬프트 (열/행/새창vs기존창 선택)
+#   layout            → GUI 프롬프트 ("4x3" 형식 한 번에 입력)
 #   layout 4 3        → 왼쪽 4행 · 오른쪽 3행 (새 창)
-#   layout 4 3 same   → 왼쪽 4행 · 오른쪽 3행 (현재 창에서 분할)
 layout() {
   local left="$1"
   local right="$2"
-  local target="${3:-new}"   # new | same
 
-  # 인자 없으면 GUI 로 물어보기 (AppleScript dialog).
-  # 1) 왼쪽 수 → 2) 오른쪽 수 → 3) 미리보기 + 새 창/현재 창.
-  # 각 인풋은 숫자만 통과할 때까지 재요청. 취소 시 함수 조용히 종료.
+  # 인자 없으면 GUI 로 하나의 입력창에서 "4 3" or "4x3" 받기.
   if [ -z "$left" ] || [ -z "$right" ]; then
-    _layout_ask_number() {
-      local prompt="$1" default="$2" val
-      while true; do
-        val=$(osascript <<END
+    local dims
+    dims=$(osascript <<'END'
 try
-  return text returned of (display dialog "${prompt}" default answer "${default}" with title "iterm-layout")
+  return text returned of (display dialog "몇 대 몇으로 나눌까요? (예: 4x3 또는 4 3)" default answer "4x3" with title "iterm-layout")
 on error
   return "CANCEL"
 end try
 END
 )
-        [ "$val" = "CANCEL" ] && return 1
-        # 공백 제거.
-        val=$(printf '%s' "$val" | tr -d '[:space:]')
-        case "$val" in
-          ''|*[!0-9]*|0)
-            osascript -e 'display dialog "1 이상의 숫자만 입력하세요." buttons {"확인"} default button "확인" with title "iterm-layout"' >/dev/null 2>&1
-            continue
-            ;;
-        esac
-        printf '%s' "$val"
-        return 0
-      done
-    }
-
-    left=$(_layout_ask_number "왼쪽 열의 세로 분할 수?" "4") || return 0
-    right=$(_layout_ask_number "오른쪽 열의 세로 분할 수?" "3") || return 0
-
-    # 미리보기(번호 매김) 생성. 왼쪽 열은 1..left, 오른쪽 열은 left+1..left+right.
-    local preview=""
-    local rows=$left
-    [ "$right" -gt "$rows" ] && rows=$right
-    local i n_left n_right leftCell rightCell
-    for ((i = 1; i <= rows; i++)); do
-      if [ "$i" -le "$left" ]; then
-        n_left=$i
-        leftCell=$(printf "[ %2d ]" "$n_left")
-      else
-        leftCell="      "
-      fi
-      if [ "$i" -le "$right" ]; then
-        n_right=$((left + i))
-        rightCell=$(printf "[ %2d ]" "$n_right")
-      else
-        rightCell="      "
-      fi
-      preview+="${leftCell}  ${rightCell}"$'\n'
-    done
-
-    local choice
-    choice=$(osascript <<END
-try
-  return button returned of (display dialog "${left} × ${right} 로 만듭니다.
-
-${preview}
-어디에 만들까요?" buttons {"취소", "현재 창", "새 창"} default button "새 창" with title "iterm-layout")
-on error
-  return "CANCEL"
-end try
-END
-)
-    [ "$choice" = "CANCEL" ] && return 0
-    if [ "$choice" = "현재 창" ]; then
-      target="same"
-    else
-      target="new"
-    fi
+    [ "$dims" = "CANCEL" ] && return 0
+    dims=$(printf '%s' "$dims" | tr 'xX×,' ' ' | tr -s ' ')
+    left="${dims%% *}"
+    right="${dims##* }"
+    case "$left$right" in
+      ''|*[!0-9]*|0*|*0)
+        osascript -e 'display dialog "1 이상의 숫자 두 개를 입력하세요 (예: 4x3)" buttons {"확인"} default button "확인" with title "iterm-layout"' >/dev/null 2>&1
+        return 1
+        ;;
+    esac
   fi
 
-  # 숫자 유효성 최소 방어.
   case "$left$right" in
     ''|*[!0-9]*) echo "layout: 숫자 두 개가 필요합니다 (예: layout 4 3)"; return 1 ;;
   esac
 
-  local windowExpr
-  if [ "$target" = "same" ]; then
-    windowExpr='set win to current window'
-  else
-    windowExpr='set win to (create window with default profile)'
-  fi
-
-  # 생성 후에도 확인할 수 있도록 미리보기 재생성 (인자 모드로 호출된 경우 대비).
-  local previewAfter=""
-  local afterRows=$left
-  [ "$right" -gt "$afterRows" ] && afterRows=$right
-  local ii lc rc
-  for ((ii = 1; ii <= afterRows; ii++)); do
-    if [ "$ii" -le "$left" ]; then
-      lc=$(printf "[ %2d ]" "$ii")
-    else
-      lc="      "
-    fi
-    if [ "$ii" -le "$right" ]; then
-      rc=$(printf "[ %2d ]" "$((left + ii))")
-    else
-      rc="      "
-    fi
-    previewAfter+="${lc}  ${rc}"$'\n'
-  done
-
   osascript <<END
 tell application "iTerm"
   activate
-  $windowExpr
+  set win to (create window with default profile)
   set leftSessions to {current session of win}
-  -- 1) 좌·우 두 열로 나눔. 오른쪽 열 첫 세션 저장.
   tell current session of win
     set rightTop to split vertically with default profile
   end tell
   set rightSessions to {rightTop}
-  -- 2) 왼쪽 열(첫 세션) 을 (left - 1) 번 가로 분할, 각 결과 세션을 리스트에 append.
   set leftCurrent to current session of win
   repeat $((left - 1)) times
     tell leftCurrent
@@ -131,7 +50,6 @@ tell application "iTerm"
     set end of leftSessions to nextS
     set leftCurrent to nextS
   end repeat
-  -- 3) 오른쪽 열 을 (right - 1) 번 가로 분할, 각 결과 세션 append.
   set rightCurrent to rightTop
   repeat $((right - 1)) times
     tell rightCurrent
@@ -140,7 +58,6 @@ tell application "iTerm"
     set end of rightSessions to nextS
     set rightCurrent to nextS
   end repeat
-  -- 4) 이름 부여: 왼쪽 1..left, 오른쪽 left+1..left+right.
   repeat with i from 1 to (count of leftSessions)
     set name of item i of leftSessions to ("" & i)
   end repeat
@@ -148,12 +65,5 @@ tell application "iTerm"
     set name of item i of rightSessions to ("" & (${left} + i))
   end repeat
 end tell
-END
-
-  # 생성 결과 미리보기 팝업 (닫기 전엔 유지).
-  osascript <<END &
-display dialog "생성 완료: ${left} × ${right}
-
-${previewAfter}" buttons {"닫기"} default button "닫기" with title "iterm-layout"
 END
 }
