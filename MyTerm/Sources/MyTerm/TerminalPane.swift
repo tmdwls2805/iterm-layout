@@ -54,7 +54,18 @@ struct TerminalHost: NSViewRepresentable {
   func makeNSView(context: Context) -> LocalProcessTerminalView {
     let view = LocalProcessTerminalView(frame: .zero)
     let shell = ProcessInfo.processInfo.environment["SHELL"] ?? "/bin/zsh"
-    view.startProcess(executable: shell, args: [], environment: nil, execName: nil)
+    let home = FileManager.default.homeDirectoryForCurrentUser.path
+    // 셸이 홈 디렉터리에서 시작하도록 HOME/PWD 환경변수 명시 + login shell.
+    var env = ProcessInfo.processInfo.environment
+    env["HOME"] = home
+    env["PWD"] = home
+    let envArray = env.map { "\($0.key)=\($0.value)" }
+    view.startProcess(
+      executable: shell,
+      args: ["-l"],
+      environment: envArray,
+      execName: nil
+    )
     holder.view = view
     return view
   }
