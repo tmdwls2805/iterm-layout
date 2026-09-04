@@ -1,0 +1,13 @@
+{
+  "": {
+    "dependencies": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/SwiftTermBuildInfoGenerator.build/SwiftTermBuildInfoGenerator.d",
+    "object": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/SwiftTermBuildInfoGenerator.build/SwiftTermBuildInfoGenerator.o",
+    "swift-dependencies": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/SwiftTermBuildInfoGenerator.build/master.swiftdeps"
+  },
+  "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/checkouts/SwiftTerm/Sources/SwiftTermBuildInfoGenerator/BuildInfoGenerator.swift": {
+    "object": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/SwiftTermBuildInfoGenerator.build/BuildInfoGenerator.swift.o",
+    "swiftmodule": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/SwiftTermBuildInfoGenerator.build/BuildInfoGenerator~partial.swiftmodule",
+    "swift-dependencies": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/SwiftTermBuildInfoGenerator.build/BuildInfoGenerator.swiftdeps",
+    "diagnostics": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/SwiftTermBuildInfoGenerator.build/BuildInfoGenerator.dia"
+  }
+}

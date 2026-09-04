@@ -1,0 +1,25 @@
+{
+  "": {
+    "dependencies": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/MyTerm.d",
+    "object": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/MyTerm.o",
+    "swift-dependencies": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/master.swiftdeps"
+  },
+  "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/Sources/MyTerm/ContentView.swift": {
+    "object": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/ContentView.swift.o",
+    "swiftmodule": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/ContentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/ContentView.swiftdeps",
+    "diagnostics": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/ContentView.dia"
+  },
+  "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/Sources/MyTerm/MyTermApp.swift": {
+    "object": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/MyTermApp.swift.o",
+    "swiftmodule": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/MyTermApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/MyTermApp.swiftdeps",
+    "diagnostics": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/MyTermApp.dia"
+  },
+  "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/Sources/MyTerm/TerminalPane.swift": {
+    "object": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/TerminalPane.swift.o",
+    "swiftmodule": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/TerminalPane~partial.swiftmodule",
+    "swift-dependencies": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/TerminalPane.swiftdeps",
+    "diagnostics": "/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/MyTerm.build/TerminalPane.dia"
+  }
+}

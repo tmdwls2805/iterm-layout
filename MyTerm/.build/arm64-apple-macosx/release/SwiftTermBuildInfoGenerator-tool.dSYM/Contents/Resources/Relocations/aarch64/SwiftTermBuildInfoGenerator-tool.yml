@@ -1,0 +1,60 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/silverslab/Desktop/everyoung-code/iterm-layout/MyTerm/.build/arm64-apple-macosx/release/SwiftTermBuildInfoGenerator-tool'
+relocations:
+  - { offset: 0x8931E, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator10GitCommand33_B8AAF0C1700A97940ED74101BCD22C7BLLV6output3forSSSgSaySSG_tF', symObjAddr: 0x0, symBinAddr: 0x100001B94, symSize: 0x4E4 }
+  - { offset: 0x89540, size: 0x8, addend: 0x0, symName: '_$sSlsE5split9maxSplits25omittingEmptySubsequences14whereSeparatorSay11SubSequenceQzGSi_S2b7ElementQzKXEtKFSS_Tg5166$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLV7resolve9referenceSSSgSS_tFSbSJcfu_33_3b2a2a44c852d2f2300b53d4c8ffe498SJSbTf3npk_nTf1nncn_n', symObjAddr: 0x1B38, symBinAddr: 0x1000036CC, symSize: 0x43C }
+  - { offset: 0x8999F, size: 0x8, addend: 0x0, symName: '_$sSlsE5split9maxSplits25omittingEmptySubsequences14whereSeparatorSay11SubSequenceQzGSi_S2b7ElementQzKXEtKFSS_Tg5', symObjAddr: 0x1F74, symBinAddr: 0x100003B08, symSize: 0x3EC }
+  - { offset: 0x89E6C, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOSHAASH13_rawHashValue4seedS2i_tFTW', symObjAddr: 0x2784, symBinAddr: 0x100004318, symSize: 0x3C }
+  - { offset: 0x89EF3, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOs0F0AAsAEP7_domainSSvgTW', symObjAddr: 0x27C0, symBinAddr: 0x100004354, symSize: 0x4 }
+  - { offset: 0x89F0F, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOs0F0AAsAEP5_codeSivgTW', symObjAddr: 0x27C4, symBinAddr: 0x100004358, symSize: 0x4 }
+  - { offset: 0x89F2B, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOs0F0AAsAEP05_userD0yXlSgvgTW', symObjAddr: 0x27C8, symBinAddr: 0x10000435C, symSize: 0x4 }
+  - { offset: 0x89F47, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOs0F0AAsAEP19_getEmbeddedNSErroryXlSgyFTW', symObjAddr: 0x27CC, symBinAddr: 0x100004360, symSize: 0x4 }
+  - { offset: 0x89F9C, size: 0x8, addend: 0x0, symName: '_$sSlsE9dropFirsty11SubSequenceQzSiFSS_Tg5Tf4ng_n', symObjAddr: 0x2D88, symBinAddr: 0x10000491C, symSize: 0x9C }
+  - { offset: 0x8A8E9, size: 0x8, addend: 0x0, symName: '_$ss22__RawDictionaryStorageC4findys10_HashTableV6BucketV6bucket_Sb5foundtxSHRzlFSS_Tg5', symObjAddr: 0x280C, symBinAddr: 0x1000043A0, symSize: 0x64 }
+  - { offset: 0x8A921, size: 0x8, addend: 0x0, symName: '_$ss22__RawDictionaryStorageC4find_9hashValues10_HashTableV6BucketV6bucket_Sb5foundtx_SitSHRzlFSS_Tg5', symObjAddr: 0x2870, symBinAddr: 0x100004404, symSize: 0xB4 }
+  - { offset: 0x8AA75, size: 0x8, addend: 0x0, symName: '_$sSa6append10contentsOfyqd__n_t7ElementQyd__RszSTRd__lFSS_SaySSGTg5', symObjAddr: 0x2924, symBinAddr: 0x1000044B8, symSize: 0xF0 }
+  - { offset: 0x8AD40, size: 0x8, addend: 0x0, symName: '_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtFSs_Tg5', symObjAddr: 0x2A14, symBinAddr: 0x1000045A8, symSize: 0x100 }
+  - { offset: 0x8AE8F, size: 0x8, addend: 0x0, symName: '_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtFSS_Tg5', symObjAddr: 0x2B14, symBinAddr: 0x1000046A8, symSize: 0x100 }
+  - { offset: 0x8AFF4, size: 0x8, addend: 0x0, symName: '_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF10Foundation3URLV_Tg5', symObjAddr: 0x2C14, symBinAddr: 0x1000047A8, symSize: 0x174 }
+  - { offset: 0x8B21C, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLVMa', symObjAddr: 0x3B88, symBinAddr: 0x10000571C, symSize: 0x38 }
+  - { offset: 0x8B230, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOADs0F0AAWl', symObjAddr: 0x3BC0, symBinAddr: 0x100005754, symSize: 0x40 }
+  - { offset: 0x8B244, size: 0x8, addend: 0x0, symName: ___swift_instantiateConcreteTypeFromMangledName, symObjAddr: 0x3C00, symBinAddr: 0x100005794, symSize: 0x44 }
+  - { offset: 0x8B258, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLVWOh', symObjAddr: 0x3C44, symBinAddr: 0x1000057D8, symSize: 0x3C }
+  - { offset: 0x8B26C, size: 0x8, addend: 0x0, symName: '_$sS2SSysWl', symObjAddr: 0x3C80, symBinAddr: 0x100005814, symSize: 0x40 }
+  - { offset: 0x8B280, size: 0x8, addend: 0x0, symName: '_$s10Foundation3URLVSgWOh', symObjAddr: 0x3CC0, symBinAddr: 0x100005854, symSize: 0x40 }
+  - { offset: 0x8B294, size: 0x8, addend: 0x0, symName: '_$s10Foundation3URLVSgWOc', symObjAddr: 0x3D00, symBinAddr: 0x100005894, symSize: 0x48 }
+  - { offset: 0x8B2A8, size: 0x8, addend: 0x0, symName: '_$s10Foundation3URLVSgWOb', symObjAddr: 0x3D48, symBinAddr: 0x1000058DC, symSize: 0x48 }
+  - { offset: 0x8B2BC, size: 0x8, addend: 0x0, symName: '_$s10Foundation4DataV15_RepresentationOWOe', symObjAddr: 0x3D90, symBinAddr: 0x100005924, symSize: 0x40 }
+  - { offset: 0x8B2F4, size: 0x8, addend: 0x0, symName: '_$sSlsSQ7ElementRpzrlE5split9separator9maxSplits25omittingEmptySubsequencesSay11SubSequenceQzGAB_SiSbtFSbABXEfU_SS_TG5TA', symObjAddr: 0x3DD0, symBinAddr: 0x100005964, symSize: 0x54 }
+  - { offset: 0x8B386, size: 0x8, addend: 0x0, symName: ___swift_memcpy0_1, symObjAddr: 0x3E24, symBinAddr: 0x1000059B8, symSize: 0x4 }
+  - { offset: 0x8B39A, size: 0x8, addend: 0x0, symName: ___swift_noop_void_return, symObjAddr: 0x3E28, symBinAddr: 0x1000059BC, symSize: 0x4 }
+  - { offset: 0x8B3AE, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOwet', symObjAddr: 0x3E2C, symBinAddr: 0x1000059C0, symSize: 0x50 }
+  - { offset: 0x8B3C2, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOwst', symObjAddr: 0x3E7C, symBinAddr: 0x100005A10, symSize: 0x7C }
+  - { offset: 0x8B3D6, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOwug', symObjAddr: 0x3EF8, symBinAddr: 0x100005A8C, symSize: 0x8 }
+  - { offset: 0x8B3EA, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOwup', symObjAddr: 0x3F00, symBinAddr: 0x100005A94, symSize: 0x4 }
+  - { offset: 0x8B3FE, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOwui', symObjAddr: 0x3F04, symBinAddr: 0x100005A98, symSize: 0x4 }
+  - { offset: 0x8B412, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOMa', symObjAddr: 0x3F08, symBinAddr: 0x100005A9C, symSize: 0x10 }
+  - { offset: 0x8B426, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLVwCP', symObjAddr: 0x3F18, symBinAddr: 0x100005AAC, symSize: 0x3C }
+  - { offset: 0x8B43A, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLVwxx', symObjAddr: 0x3F54, symBinAddr: 0x100005AE8, symSize: 0x34 }
+  - { offset: 0x8B44E, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLVwcp', symObjAddr: 0x3F88, symBinAddr: 0x100005B1C, symSize: 0x44 }
+  - { offset: 0x8B462, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLVwca', symObjAddr: 0x3FCC, symBinAddr: 0x100005B60, symSize: 0x44 }
+  - { offset: 0x8B476, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLVwtk', symObjAddr: 0x4010, symBinAddr: 0x100005BA4, symSize: 0x44 }
+  - { offset: 0x8B48A, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLVwta', symObjAddr: 0x4054, symBinAddr: 0x100005BE8, symSize: 0x44 }
+  - { offset: 0x8B49E, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLVwet', symObjAddr: 0x4098, symBinAddr: 0x100005C2C, symSize: 0xC }
+  - { offset: 0x8B4B2, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLVwst', symObjAddr: 0x40E0, symBinAddr: 0x100005C74, symSize: 0xC }
+  - { offset: 0x8B4C6, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLVMr', symObjAddr: 0x412C, symBinAddr: 0x100005CC0, symSize: 0x68 }
+  - { offset: 0x8B4DA, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOSHAASQWb', symObjAddr: 0x4194, symBinAddr: 0x100005D28, symSize: 0x4 }
+  - { offset: 0x8B4EE, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOADSQAAWl', symObjAddr: 0x4198, symBinAddr: 0x100005D2C, symSize: 0x40 }
+  - { offset: 0x8B511, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator10GitCommand33_B8AAF0C1700A97940ED74101BCD22C7BLLV6output3forSSSgSaySSG_tF', symObjAddr: 0x0, symBinAddr: 0x100001B94, symSize: 0x4E4 }
+  - { offset: 0x8B6C3, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLV4headSSSg9reference_AF6committvg', symObjAddr: 0x4E4, symBinAddr: 0x100002078, symSize: 0x2F8 }
+  - { offset: 0x8B75E, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLV7resolve9referenceSSSgSS_tF', symObjAddr: 0x7DC, symBinAddr: 0x100002370, symSize: 0xC68 }
+  - { offset: 0x8C02F, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLV12gitDirectory10Foundation3URLVSgvg', symObjAddr: 0x1444, symBinAddr: 0x100002FD8, symSize: 0x3D4 }
+  - { offset: 0x8C0FC, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator13GitRepository33_B8AAF0C1700A97940ED74101BCD22C7BLLV15commonDirectory10Foundation3URLVSgvg', symObjAddr: 0x1818, symBinAddr: 0x1000033AC, symSize: 0x320 }
+  - { offset: 0x8C175, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator10GitCommand33_B8AAF0C1700A97940ED74101BCD22C7BLLV10executable5named10Foundation3URLVSgSS_tF', symObjAddr: 0x2360, symBinAddr: 0x100003EF4, symSize: 0x3B8 }
+  - { offset: 0x8C467, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOSQAASQ2eeoiySbx_xtFZTW', symObjAddr: 0x2718, symBinAddr: 0x1000042AC, symSize: 0x8 }
+  - { offset: 0x8C4A2, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOSHAASH9hashValueSivgTW', symObjAddr: 0x2720, symBinAddr: 0x1000042B4, symSize: 0x40 }
+  - { offset: 0x8C568, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0E5Error33_B8AAF0C1700A97940ED74101BCD22C7BLLOSHAASH4hash4intoys6HasherVz_tFTW', symObjAddr: 0x2760, symBinAddr: 0x1000042F4, symSize: 0x24 }
+  - { offset: 0x8C5D9, size: 0x8, addend: 0x0, symName: _SwiftTermBuildInfoGenerator_main, symObjAddr: 0x27D0, symBinAddr: 0x100004364, symSize: 0x3C }
+  - { offset: 0x8C7F7, size: 0x8, addend: 0x0, symName: '_$s27SwiftTermBuildInfoGenerator0cdE0V4mainyyKFZTf4d_n', symObjAddr: 0x2E24, symBinAddr: 0x1000049B8, symSize: 0xD64 }
+...

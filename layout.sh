@@ -78,8 +78,13 @@ END
     ''|*[!0-9]*) echo "layout: 숫자 두 개가 필요합니다 (예: layout 4 3)"; return 1 ;;
   esac
 
-  # MYTERM_BIN 환경변수가 지정되어 있으면 MyTerm 앱으로 띄우고 종료.
-  # 예: export MYTERM_BIN="$HOME/Desktop/everyoung-code/iterm-layout/MyTerm/.build/release/MyTerm"
+  # MYTERM_APP 환경변수(.app 번들 경로) 지정 시 자체 앱으로 띄우고 종료.
+  # 예: export MYTERM_APP="$HOME/Desktop/everyoung-code/iterm-layout/MyTerm/.build/release/MyTerm.app"
+  if [ -n "$MYTERM_APP" ] && [ -d "$MYTERM_APP" ]; then
+    open -n "$MYTERM_APP" --args --layout "${left},${right}"
+    return 0
+  fi
+  # Legacy: raw binary (창이 안 뜨는 경우가 있어 .app 권장).
   if [ -n "$MYTERM_BIN" ] && [ -x "$MYTERM_BIN" ]; then
     "$MYTERM_BIN" --layout "${left},${right}" >/dev/null 2>&1 &
     return 0
