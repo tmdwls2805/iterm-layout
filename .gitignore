@@ -1,0 +1,7 @@
+# SwiftPM 산출물 / 캐시
+MyTerm/.build/
+MyTerm/.swiftpm/
+MyTerm/Package.resolved
+
+# macOS
+.DS_Store
