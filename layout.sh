@@ -1,29 +1,70 @@
 # iterm-layout — iTerm2 자동 분할
 # 사용:
-#   layout            → GUI 프롬프트 ("4x3" 형식 한 번에 입력)
+#   layout            → GUI 프롬프트 (한 창에 세로/가로 인풋 2개)
 #   layout 4 3        → 왼쪽 4행 · 오른쪽 3행 (새 창)
 layout() {
   local left="$1"
   local right="$2"
 
-  # 인자 없으면 GUI 로 하나의 입력창에서 "4 3" or "4x3" 받기.
   if [ -z "$left" ] || [ -z "$right" ]; then
-    local dims
-    dims=$(osascript <<'END'
-try
-  return text returned of (display dialog "몇 대 몇으로 나눌까요? (예: 4x3 또는 4 3)" default answer "4x3" with title "iterm-layout")
-on error
-  return "CANCEL"
-end try
+    # 한 창에 두 개의 텍스트 필드 (세로/가로) 를 표시하기 위해 JXA 사용.
+    # 결과는 "L,R" 형태 or "CANCEL".
+    local reply
+    reply=$(osascript -l JavaScript <<'END'
+ObjC.import('AppKit');
+
+function makeField(placeholder, y) {
+  const f = $.NSTextField.alloc.initWithFrame($.NSMakeRect(90, y, 120, 24));
+  f.placeholderString = placeholder;
+  f.stringValue = "";
+  return f;
+}
+
+function makeLabel(text, y) {
+  const l = $.NSTextField.alloc.initWithFrame($.NSMakeRect(0, y + 3, 85, 20));
+  l.stringValue = text;
+  l.editable = false;
+  l.bordered = false;
+  l.drawsBackground = false;
+  l.alignment = $.NSTextAlignmentRight;
+  return l;
+}
+
+const app = Application.currentApplication();
+app.includeStandardAdditions = true;
+
+const view = $.NSView.alloc.initWithFrame($.NSMakeRect(0, 0, 220, 68));
+const leftField = makeField("예: 4", 36);
+const rightField = makeField("예: 3", 4);
+view.addSubview(makeLabel("왼쪽 세로 :", 36));
+view.addSubview(leftField);
+view.addSubview(makeLabel("오른쪽 세로 :", 4));
+view.addSubview(rightField);
+
+const alert = $.NSAlert.alloc.init;
+alert.messageText = "iterm-layout";
+alert.informativeText = "왼쪽 열과 오른쪽 열의 세로 분할 수를 입력하세요.";
+alert.accessoryView = view;
+alert.addButtonWithTitle("생성");
+alert.addButtonWithTitle("취소");
+
+const res = alert.runModal;
+if (res != 1000) { "CANCEL" }
+else {
+  const l = ObjC.unwrap(leftField.stringValue);
+  const r = ObjC.unwrap(rightField.stringValue);
+  l + "," + r;
+}
 END
 )
-    [ "$dims" = "CANCEL" ] && return 0
-    dims=$(printf '%s' "$dims" | tr 'xX×,' ' ' | tr -s ' ')
-    left="${dims%% *}"
-    right="${dims##* }"
+    [ "$reply" = "CANCEL" ] && return 0
+    left="${reply%,*}"
+    right="${reply#*,}"
+    left=$(printf '%s' "$left" | tr -d '[:space:]')
+    right=$(printf '%s' "$right" | tr -d '[:space:]')
     case "$left$right" in
       ''|*[!0-9]*|0*|*0)
-        osascript -e 'display dialog "1 이상의 숫자 두 개를 입력하세요 (예: 4x3)" buttons {"확인"} default button "확인" with title "iterm-layout"' >/dev/null 2>&1
+        osascript -e 'display dialog "1 이상의 숫자만 입력하세요." buttons {"확인"} default button "확인" with title "iterm-layout"' >/dev/null 2>&1
         return 1
         ;;
     esac
