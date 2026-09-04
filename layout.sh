@@ -21,8 +21,16 @@ end try
 END
 )
     [ "$dims" = "CANCEL" ] && return 0
+    # "4 3" / "4x3" / "4×3" / "4,3" 모두 허용.
+    dims=$(printf '%s' "$dims" | tr 'x×,' ' ' | tr -s ' ')
     left="${dims%% *}"
     right="${dims##* }"
+    case "$left$right" in
+      ''|*[!0-9]*)
+        osascript -e 'display dialog "숫자 두 개를 공백으로 구분해 입력하세요 (예: 4 3)" buttons {"확인"} default button "확인" with title "iterm-layout"' >/dev/null 2>&1
+        return 1
+        ;;
+    esac
 
     # 미리보기(번호 매김) 생성. 왼쪽 열은 1..left, 오른쪽 열은 left+1..left+right.
     local preview=""
