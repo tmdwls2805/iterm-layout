@@ -9,28 +9,36 @@ layout() {
   local target="${3:-new}"   # new | same
 
   # 인자 없으면 GUI 로 물어보기 (AppleScript dialog).
-  # 1) 몇 대 몇 입력 → 2) 미리보기(번호 매긴 텍스트 아트) → 3) 새 창/현재 창.
+  # 1) 왼쪽 수 → 2) 오른쪽 수 → 3) 미리보기 + 새 창/현재 창.
+  # 각 인풋은 숫자만 통과할 때까지 재요청. 취소 시 함수 조용히 종료.
   if [ -z "$left" ] || [ -z "$right" ]; then
-    local dims
-    dims=$(osascript <<'END'
+    _layout_ask_number() {
+      local prompt="$1" default="$2" val
+      while true; do
+        val=$(osascript <<END
 try
-  return text returned of (display dialog "몇 대 몇으로 나눌까요? (예: 4 3)" default answer "4 3" with title "iterm-layout")
+  return text returned of (display dialog "${prompt}" default answer "${default}" with title "iterm-layout")
 on error
   return "CANCEL"
 end try
 END
 )
-    [ "$dims" = "CANCEL" ] && return 0
-    # "4 3" / "4x3" / "4×3" / "4,3" 모두 허용.
-    dims=$(printf '%s' "$dims" | tr 'x×,' ' ' | tr -s ' ')
-    left="${dims%% *}"
-    right="${dims##* }"
-    case "$left$right" in
-      ''|*[!0-9]*)
-        osascript -e 'display dialog "숫자 두 개를 공백으로 구분해 입력하세요 (예: 4 3)" buttons {"확인"} default button "확인" with title "iterm-layout"' >/dev/null 2>&1
-        return 1
-        ;;
-    esac
+        [ "$val" = "CANCEL" ] && return 1
+        # 공백 제거.
+        val=$(printf '%s' "$val" | tr -d '[:space:]')
+        case "$val" in
+          ''|*[!0-9]*|0)
+            osascript -e 'display dialog "1 이상의 숫자만 입력하세요." buttons {"확인"} default button "확인" with title "iterm-layout"' >/dev/null 2>&1
+            continue
+            ;;
+        esac
+        printf '%s' "$val"
+        return 0
+      done
+    }
+
+    left=$(_layout_ask_number "왼쪽 열의 세로 분할 수?" "4") || return 0
+    right=$(_layout_ask_number "오른쪽 열의 세로 분할 수?" "3") || return 0
 
     # 미리보기(번호 매김) 생성. 왼쪽 열은 1..left, 오른쪽 열은 left+1..left+right.
     local preview=""
