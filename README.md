@@ -40,3 +40,17 @@ layout 2 2
 ## 요구사항
 
 - macOS + iTerm2 (Preferences → General → Magic → **"Enable Python API"** or "AppleScript" 허용)
+
+## MyTerm (자체 터미널 앱, 옵션)
+
+iTerm 대신 자체 미니 터미널 앱으로 뜨게 하고 싶으면 [`MyTerm`](./MyTerm) 서브 프로젝트 빌드 후
+`MYTERM_BIN` 환경변수를 지정하면 `layout` 이 그쪽을 실행함.
+
+```bash
+cd MyTerm
+swift build -c release
+export MYTERM_BIN="$(pwd)/.build/release/MyTerm"
+layout 4 3   # MyTerm 창으로 4×3 분할 열림
+```
+
+`MYTERM_BIN` 이 없으면 기존대로 iTerm 사용.

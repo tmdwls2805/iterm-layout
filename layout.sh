@@ -13,6 +13,10 @@ layout() {
     reply=$(osascript -l JavaScript <<'END'
 ObjC.import('AppKit');
 
+// osascript 를 포어그라운드 앱으로 만들어 modal 창이 다른 창 뒤로 숨지 않게 한다.
+$.NSApplication.sharedApplication.setActivationPolicy(0);
+$.NSApplication.sharedApplication.activateIgnoringOtherApps(true);
+
 function makeField(placeholder, y) {
   const f = $.NSTextField.alloc.initWithFrame($.NSMakeRect(90, y, 120, 24));
   f.placeholderString = placeholder;
@@ -73,6 +77,13 @@ END
   case "$left$right" in
     ''|*[!0-9]*) echo "layout: 숫자 두 개가 필요합니다 (예: layout 4 3)"; return 1 ;;
   esac
+
+  # MYTERM_BIN 환경변수가 지정되어 있으면 MyTerm 앱으로 띄우고 종료.
+  # 예: export MYTERM_BIN="$HOME/Desktop/everyoung-code/iterm-layout/MyTerm/.build/release/MyTerm"
+  if [ -n "$MYTERM_BIN" ] && [ -x "$MYTERM_BIN" ]; then
+    "$MYTERM_BIN" --layout "${left},${right}" >/dev/null 2>&1 &
+    return 0
+  fi
 
   osascript <<END
 tell application "iTerm"
